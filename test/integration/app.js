@@ -1,16 +1,10 @@
-// Teste de integração serve para saber que o comportamente da nossa aplicação
-// está acontecendo como a gente espera.
-
-
-
-
 // Teste para verificar as rotas da API Books
-describe('Routes Products -', () => {
+describe('Routes Products |', () => {
     var defaultProduct = {
       name: "product"
     }
 
-    describe('GET /products -', () => {
+    describe('GET /products', () => {
         it('should return a list of products', done => {
             request
                 .get('/products')
@@ -21,7 +15,4 @@ describe('Routes Products -', () => {
                 });
         });
     });
-
-
-
 });
