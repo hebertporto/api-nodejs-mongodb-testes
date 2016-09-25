@@ -16,8 +16,8 @@ app.use(bodyParser.json());
 // cors
 app.use(cors());
 
-var config = require('./config/config');
-var db     = require('./config/db');
+var config      = require('./config/config');
+var db          = require('./config/db');
 
 require('./routes')(app);
 

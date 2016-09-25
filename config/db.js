@@ -3,7 +3,10 @@
 var mongoose = require('mongoose');
 var config = require('./config');
 
-mongoose.connect(config.mongodb.uri);
+mongoose.Promise = require('bluebird');
+
+mongoose.connect(config.db[process.env.NODE_ENV]);
+
 
 mongoose.connection.on('error', (err) => {
     console.log("Erro: ", err);
@@ -14,14 +17,8 @@ mongoose.connection.on('connected', () => {
 });
 
 mongoose.connection.on('disconnected', () => {
-    console.log("Conectado ao MongoDB");
+    console.log("Desconectado do MongoDB");
 });
 
-process.on('SIGINT', () => {
-    mongoose.connection.close(() => {
-        console.log('Conexão Encerrada');
-        process.exit(0);
-    });
-});
 
 module.exports = mongoose;
