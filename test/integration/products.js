@@ -23,26 +23,39 @@ describe('Routes Products |', () => {
             });
     });
 
-    describe('GET /products', () => {
+    describe('GET /products', function() {
         it('should return a list of products', done => {
             request
                 .get('/products')
-                .end((err, res) => {
-                    //console.log('res', res);
-                    //expect(res.statusCode).to.be.eql(200);
+                .end(function(err, res) {
                     expect(res.body.data[0].name).to.be.eql(defaultProduct.name);
                     done(err);
                 });
         });
     });
 
-    describe('GET /products/id', () => {
-        it('should return a product', done => {
+    describe('GET /products/id', function () {
+        it('should return a product', function (done) {
             request
                 .get('/products/'+defaultProduct.id)
-                .end((err, res) => {
-                    //expect(res.statusCode).to.be.eql(200);
+                .end(function(err, res){
                     expect(res.body.data.name).to.be.eql(defaultProduct.name);
+                    done(err);
+                });
+        });
+    });
+
+    describe('PUT /products/id', function () {
+        it('should update a product', function (done) {
+            var updatedBook = {
+                id: defaultProduct.id,
+                name: "product 2"
+            }
+            request
+                .put('/products/'+updatedBook.id)
+                .send(updatedBook)
+                .end(function(err, res){
+                    expect(res.body.status).to.be.eql(true);
                     done(err);
                 });
         });
