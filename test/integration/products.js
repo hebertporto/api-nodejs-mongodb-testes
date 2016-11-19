@@ -61,5 +61,22 @@ describe('Routes Products |', () => {
         });
     });
 
+    describe('GET /products', function() {
+        it('should create a product', done => {
+
+            var product = {
+                name: "Meu Produto"
+            };
+
+            request
+                .post('/products')
+                .send(product)
+                .end(function(err, res) {
+                    expect(res.body.data.name).to.be.eql(product.name);
+                    done(err);
+                });
+        });
+    });
+
 
 });
