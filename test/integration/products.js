@@ -61,8 +61,8 @@ describe('Routes Products |', () => {
         });
     });
 
-    describe('GET /products', function() {
-        it('should create a product', done => {
+    describe('POST /products', function() {
+        it('should create a product', function (done) {
 
             var product = {
                 name: "Meu Produto"
@@ -73,6 +73,17 @@ describe('Routes Products |', () => {
                 .send(product)
                 .end(function(err, res) {
                     expect(res.body.data.name).to.be.eql(product.name);
+                    done(err);
+                });
+        });
+    });
+
+    describe('DELETE /products', function  () {
+        it('should delete a product', function (done){
+            request
+                .delete('/products/'+defaultProduct.id)
+                .end(function  (err, res) {
+                    expect(res.body.status).to.be.eql(true);
                     done(err);
                 });
         });
