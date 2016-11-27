@@ -4,6 +4,7 @@ var bodyParser  = require('body-parser');
 var morgan      = require('morgan');
 var mongoose    = require('mongoose');
 var cors        = require('cors');
+var passport    = require('passport');
 
 var app         = express();
 var server      = http.createServer(app);
@@ -15,6 +16,11 @@ app.use(bodyParser.json());
 
 // cors
 app.use(cors());
+
+// Start Passaport
+app.use(passport.initialize());  
+
+
 
 var config      = require('./config/config');
 var db          = require('./config/db');
