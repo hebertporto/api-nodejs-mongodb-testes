@@ -16,10 +16,12 @@ module.exports = function (passport) {
 			if (err) return done(err, false);
 
 			if(user){
+				console.log("user", user);
 				done(null, user)
 			}
 			else
 			{
+				console.log("fail user");
 				done(null, false);
 			}
 		});

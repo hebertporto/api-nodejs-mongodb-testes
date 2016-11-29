@@ -13,7 +13,7 @@ module.exports = {
       test        : "mongodb://localhost/apt-testavel-test"
     },
 
-    secret : "hAUSDhsuahdaushd1uh21uh31!@#!@#!$!#.#!@#&$"
+    secret : "**topSecrete"
 
 
 };
