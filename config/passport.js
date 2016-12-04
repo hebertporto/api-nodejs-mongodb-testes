@@ -1,7 +1,8 @@
 var JwtStrategy = require('passport-jwt').Strategy;
 var ExtractJwt  = require('passport-jwt').ExtractJwt;
-var User 				= require('./../lib/users/entity/users');
+var User 	   	= require('./../lib/users/entity/users');
 var config      = require('./config.js');
+
 
 module.exports = function (passport) {
 	var  opts = {};
